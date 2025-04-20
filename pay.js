@@ -35,8 +35,8 @@ async function sendEthPayment() {
         <a href="https://etherscan.io/tx/${tx.hash}" target="_blank">${tx.hash}</a>
       `;
     } catch (err) {
-      console.error("Transaction error:", err);
-      status.textContent = `❌ Error: ${err.message}`;
+      // console.error("Transaction error:", err);
+      // status.textContent = `❌ Error: ${err.message}`;
     }
   }
   
