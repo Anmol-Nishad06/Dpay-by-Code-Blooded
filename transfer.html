@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Tokens</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="Transfer.css">
+</head>
+<body>
+
+    <header>
+        <div class="nav">
+            <div class="Home"><a href="home.html">Home</a></div>
+            <div class="Feature"><a href="features.html">Feature</a></div>
+            <div class="Pricing"><a href="pricing.html">Pricing</a></div>
+            <div class="Doc"><a href="doc.html">Doc</a></div>
+            <div class="Contact"><a href="contact.html">Contact</a></div>
+        </div>
+        <a href="wallet.htlm" class="conwall">Connect Wallet</a>
+    </header>
+
+    <div class="transfer-container">
+        <h3>Transfer Tokens</h3>
+        <form id="transfer-form" class="transfer-form">
+            <div class="form-group">
+                <label for="recipient-address">Recipient Address</label>
+                <input type="text" id="recipient-address" placeholder="Enter recipient address" required />
+            </div>
+            <div class="form-group">
+                <label for="token-amount">Amount to Transfer</label>
+                <input type="number" id="token-amount" placeholder="Enter amount" required />
+            </div>
+            <button type="submit" id="submit-btn" class="transfer-btn">Transfer Tokens</button>
+        </form>
+        <p id="transaction-status"></p>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h2>DPay</h2>
+            <p>Empowering DeFi. One transaction at a time.</p>
+          </div>
+          <div class="footer-links">
+            <a href="home.html">Home</a>
+            <a href="features.html">Features</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="doc.html">Docs</a>
+            <a href="contact.html">Contact</a>
+          </div>
+          <div class="footer-social">
+            <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" /></a>
+            <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+            <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" /></a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 DPay. All rights reserved.</p>
+        </div>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/ethers@5.0.0/dist/ethers.umd.min.js"></script>
+    <script src="transfer.js"></script>
+</body>
+</html>

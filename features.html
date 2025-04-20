@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DPay - Features</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="home.css">
+  <style>
+    :root {
+      --indigo: #3d348b;
+      --lavender: #b8b3e9;
+      --coral: #ff6b6b;
+      --ghost: #f9f9fc;
+      --charcoal: #2c2c34;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--ghost);
+      color: var(--charcoal);
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+      color: var(--indigo);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background-color: var(--lavender);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--coral);
+    }
+
+    .feature-title {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--indigo);
+    }
+
+    .feature-description {
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    </div>
+    <div class="nav">
+        <div class="Home"><a href="home.html">Home</a></div>
+        <div class="Feature"><a href="features.html">Feature</a></div>
+        <div class="Pricing"><a href="pricing.html">Pricing</a></div>
+        <div class="Doc"><a href="doc.html">Doc</a></div>
+        <div class="Contact"><a href="contact.html">Contact</a></div>
+    </div>
+    <a href="wallet.html" class="conwall">Connect Wallet</a>
+</header>
+  <h1>Explore DPay Features</h1>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔐</div>
+      <div class="feature-title">Secure Wallet</div>
+      <div class="feature-description">
+        Connect safely via MetaMask, WalletConnect, or Ledger. Your keys stay with you.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <div class="feature-title">Instant Swaps</div>
+      <div class="feature-description">
+        Real-time token swaps powered by Uniswap & 0x. Fast and reliable every time.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🌉</div>
+      <div class="feature-title">Multi-Chain Support</div>
+      <div class="feature-description">
+        Use ZyPay on Ethereum, Polygon, Arbitrum and more. One wallet, many chains.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Live Tracking</div>
+      <div class="feature-description">
+        See your token balances and performance update in real time across all wallets.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🧾</div>
+      <div class="feature-title">Transaction Logs</div>
+      <div class="feature-description">
+        Every action is recorded with gas fees, TX hashes, and full audit visibility.
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature-icon">🔥</div>
+      <div class="feature-title">Gas Estimator</div>
+      <div class="feature-description">
+        Get gas fee estimates before you confirm. Stay in control of your spend.
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>DPay</h2>
+        <p>Empowering DeFi. One transaction at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="home.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="doc.html">Docs</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" /></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 DPay. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

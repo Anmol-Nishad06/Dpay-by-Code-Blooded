@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto News & Education</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #1a1a1a;
+      padding: 2rem;
+    }
+
+    .head {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .head h1 {
+      font-size: 2.5rem;
+      color: #4b0082;
+    }
+
+    .head p {
+      font-size: 1.2rem;
+      color: #666;
+    }
+
+    .news-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .news-card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+    }
+
+    .news-content {
+      padding: 1.2rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-content h3 {
+      font-size: 1.25rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .news-content p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 0.75rem;
+      flex: 1;
+    }
+
+    .news-content a {
+      color: #4b0082;
+      font-weight: 600;
+      text-decoration: none;
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header>
+    </div>
+    <div class="nav">
+        <div class="Home"><a href="home.html">Home</a></div>
+        <div class="Feature"><a href="features.html">Feature</a></div>
+        <div class="Pricing"><a href="pricing.html">Pricing</a></div>
+        <div class="Doc"><a href="doc.html">Doc</a></div>
+        <div class="Contact"><a href="contact.html">Contact</a></div>
+    </div>
+    <a href="wallet.html" class="conwall">Connect Wallet</a>
+</header>
+
+  <div class="head">
+    <h1>Crypto News & Education</h1>
+    <p>Stay updated with the latest trends and learn how crypto works</p>
+  </div>
+
+  <section class="news-section">
+    <div class="news-card">
+      <img src="https://source.unsplash.com/featured/?bitcoin" alt="Crypto Market" />
+      <div class="news-content">
+        <h3>Bitcoin Surges After ETF Approval</h3>
+        <p>Bitcoin prices jump 12% following the long-anticipated approval of a spot ETF by the SEC.</p>
+        <a href="#">Read more</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="https://source.unsplash.com/featured/?defi" alt="DeFi Growth" />
+      <div class="news-content">
+        <h3>Understanding DeFi in 2025</h3>
+        <p>Learn the basics of decentralized finance and why it's changing the future of banking.</p>
+        <a href="#">Learn more</a>
+      </div>
+    </div>
+
+    <div class="news-card">
+      <img src="https://source.unsplash.com/featured/?blockchain" alt="Blockchain Use" />
+      <div class="news-content">
+        <h3>Blockchain Beyond Currency</h3>
+        <p>From supply chains to gaming, explore how blockchain technology is disrupting industries.</p>
+        <a href="#">Explore</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>DPay</h2>
+        <p>Empowering DeFi. One transaction at a time.</p>
+      </div>
+      <div class="footer-links">
+        <a href="home.html">Home</a>
+        <a href="features.html">Features</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="doc.html">Docs</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-social">
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+        <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" /></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 DPay. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>

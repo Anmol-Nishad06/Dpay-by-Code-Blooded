@@ -1,0 +1,201 @@
+<title>Portfolio</title>
+
+<style>
+    .portfolio-section {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fefefe;
+  border-radius: 1rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+  font-family: 'Arial', sans-serif;
+}
+
+.portfolio-section h2,
+.portfolio-section h3 {
+  color: #4b0082;
+  margin-bottom: 1rem;
+}
+
+.wallet-info p,
+.token-list ul li {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.token-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.token-list li {
+  padding: 0.75rem;
+  background: #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+#price-chart {
+  max-width: 100%;
+  border-radius: 1rem;
+  background: #fff;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+</style>
+
+<link rel="stylesheet" href="home.css">
+
+<header>
+</div>
+<div class="nav">
+    <div class="Home"><a href="home.html">Home</a></div>
+    <div class="Feature"><a href="features.html">Feature</a></div>
+    <div class="Pricing"><a href="pricing.html">Pricing</a></div>
+    <div class="Doc"><a href="doc.html">Doc</a></div>
+    <div class="Contact"><a href="contact.html">Contact</a></div>
+</div>
+<a href="wallet.html" class="conwall">Connect Wallet</a>
+</header>
+
+<div class="portfolio-section">
+    <h2>Your Portfolio</h2>
+    <div class="wallet-info">
+      <p><strong>Wallet Address:</strong> <span id="wallet-address">Not connected</span></p>
+      <p><strong>Native Balance:</strong> <span id="native-balance">0</span> ETH</p>
+    </div>
+  
+    <div class="token-list">
+      <h3>Token Balances</h3>
+      <ul id="token-balances">
+        <!-- Token balances will be inserted here -->
+      </ul>
+    </div>
+  </div>
+
+<canvas id="price-chart" width="600" height="300" style="margin: 2rem auto; display: block;"></canvas>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-brand">
+      <h2>DPay</h2>
+      <p>Empowering DeFi. One transaction at a time.</p>
+    </div>
+    <div class="footer-links">
+      <a href="home.html">Home</a>
+      <a href="features.html">Features</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="doc.html">Docs</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitter.svg" alt="Twitter" /></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/discord.svg" alt="Discord" /></a>
+      <a href="#"><img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub" /></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 DPay. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
+<script>
+  const tokenList = [
+    {
+      symbol: "USDT",
+      address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+      decimals: 6,
+    },
+    {
+      symbol: "DAI",
+      address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+      decimals: 18,
+    },
+    {
+      symbol: "LINK",
+      address: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
+      decimals: 18,
+    }
+  ];
+
+  async function connectWalletAndLoadPortfolio() {
+    if (typeof window.ethereum === "undefined") {
+      alert("Please install MetaMask!");
+      return;
+    }
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = provider.getSigner();
+    const address = await signer.getAddress();
+
+    document.getElementById("wallet-address").textContent = address;
+
+    // Native Balance (ETH/MATIC)
+    const balance = await provider.getBalance(address);
+    document.getElementById("native-balance").textContent = ethers.utils.formatEther(balance).slice(0, 7);
+
+    // Token Balances
+    const tokenABI = ["function balanceOf(address) view returns (uint256)"];
+    const ul = document.getElementById("token-balances");
+    ul.innerHTML = '';
+
+    for (const token of tokenList) {
+      const contract = new ethers.Contract(token.address, tokenABI, provider);
+      const rawBalance = await contract.balanceOf(address);
+      const formatted = ethers.utils.formatUnits(rawBalance, token.decimals).slice(0, 10);
+      const li = document.createElement("li");
+      li.textContent = `${token.symbol}: ${formatted}`;
+      ul.appendChild(li);
+    }
+  }
+
+  // Load portfolio on page load or add a button to trigger manually
+  window.addEventListener("load", connectWalletAndLoadPortfolio);
+
+  async function drawPriceChart(tokenId = 'ethereum') {
+    const response = await fetch(
+      `https://api.coingecko.com/api/v3/coins/${tokenId}/market_chart?vs_currency=usd&days=7`
+    );
+    const data = await response.json();
+
+    const prices = data.prices;
+
+    const ctx = document.getElementById('price-chart').getContext('2d');
+
+    // Destroy existing chart if it exists
+    if (window.myChart) {
+      window.myChart.destroy();
+    }
+
+    window.myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: prices.map(p => new Date(p[0]).toLocaleDateString()),
+        datasets: [{
+          label: `${tokenId.toUpperCase()} Price (USD)`,
+          data: prices.map(p => p[1]),
+          backgroundColor: 'rgba(75, 0, 130, 0.2)',
+          borderColor: '#4b0082',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { display: true },
+          y: { display: true }
+        }
+      }
+    });
+  }
+
+  // Call this function on load
+  drawPriceChart('ethereum'); // Default to Ethereum
+</script>

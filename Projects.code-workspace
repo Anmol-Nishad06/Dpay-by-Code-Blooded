@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../Projects"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "web3 hackathon"
+	}
+}
